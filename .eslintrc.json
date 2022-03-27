@@ -16,5 +16,9 @@
     ],
     "rules": {
         "require-jsdoc": 0
-    }
+    },
+    "ignorePatterns": [
+        "*.js",
+        "*.d.ts"
+    ]
 }
