@@ -27,7 +27,7 @@ export default class ImgSrcHandler {
       if (!this.recurse) {
         try {
           ImgSrcHelper.validateInput(id, dataUrl,
-              'dataUrl', 'setDataUrlbyId');
+              'dataUrl', 'setDataUrlById');
         } catch (err) {
           return reject(err);
         }
@@ -73,11 +73,11 @@ export default class ImgSrcHandler {
     });
   }
 
-  setDataUrlbyId(id, dataUrl) {
+  setDataUrlById(id, dataUrl) {
     return new Promise((resolve, reject) => {
       try {
         ImgSrcHelper.validateInput(id, dataUrl,
-            'dataUrl', 'setDataUrlbyId');
+            'dataUrl', 'setDataUrlById');
       } catch (err) {
         return reject(err);
       }

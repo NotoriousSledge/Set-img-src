@@ -4,7 +4,7 @@ export function setBlobById(id: string, blobData: Blob,
 export function setBase64ById(id: string,
     base64: string, previousValue: string): Promise<string>
 
-export function setDataUrlbyId(id: string,
+export function setDataUrlById(id: string,
     dataUrl: string, previousValue: string): Promise<string>
 
 export function removeImageById(id: string, value: string): Promise<void>

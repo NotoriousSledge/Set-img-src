@@ -8,8 +8,8 @@ export default class ImgSrcStaticHandler {
     return funk.setBase64ById(id, base64, previousValue);
   }
 
-  static setDataUrlbyId(id, dataUrl, previousValue) {
-    return funk.setDataUrlbyId(id, dataUrl, previousValue);
+  static setDataUrlById(id, dataUrl, previousValue) {
+    return funk.setDataUrlById(id, dataUrl, previousValue);
   }
 
   static removeImageById(id, value) {

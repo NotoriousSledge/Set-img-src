@@ -7,7 +7,7 @@ export default class ImgSrcHandler {
 
   public setBase64ById(id: string, base64: string): Promise<void>
 
-  public setDataUrlbyId(id: string, dataUrl: string): Promise<void>
+  public setDataUrlById(id: string, dataUrl: string): Promise<void>
 
   public removeImageById(id: string): Promise<void>
 }

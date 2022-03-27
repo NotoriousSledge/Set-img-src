@@ -6,7 +6,7 @@ export function setBlobById(id, blobData, previousValue, recursion) {
     if (recursion) {
       try {
         ImgSrcHelper.validateInput(id, dataUrl,
-            'dataUrl', 'setDataUrlbyId');
+            'dataUrl', 'setDataUrlById');
       } catch (err) {
         return reject(err);
       }
@@ -45,11 +45,11 @@ export function setBase64ById(id, base64, previousValue) {
   });
 }
 
-export function setDataUrlbyId(id, dataUrl, previousValue) {
+export function setDataUrlById(id, dataUrl, previousValue) {
   return new Promise((resolve, reject) => {
     try {
       ImgSrcHelper.validateInput(id, dataUrl,
-          'dataUrl', 'setDataUrlbyId');
+          'dataUrl', 'setDataUrlById');
     } catch (err) {
       return reject(err);
     }
