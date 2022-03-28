@@ -1,6 +1,6 @@
 {
   "name": "set-img-src",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Sets the src of an image element without leaking memory.",
   "main": "./dist/index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/exsjabe/SetImgSrc.git"
+    "url": "git+https://github.com/exsjabe/Set-Img-Src.git"
   },
   "keywords": [
     "img",
@@ -26,16 +26,14 @@
   "author": "exsjabe",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/exsjabe/SetImgSrc/issues"
+    "url": "https://github.com/exsjabe/Set-Img-Src/issues"
   },
-  "homepage": "https://github.com/exsjabe/SetImgSrc#readme",
+  "homepage": "https://github.com/exsjabe/Set-Img-Src#readme",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.16.0",
     "@typescript-eslint/parser": "^5.16.0",
     "eslint": "^8.12.0",
-    "eslint-config-google": "^0.14.0"
-  },
-  "dependencies": {
+    "eslint-config-google": "^0.14.0",
     "typescript": "^4.6.3"
   }
 }
