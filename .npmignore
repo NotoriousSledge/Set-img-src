@@ -1,5 +1,5 @@
 tsconfig.json
-eslintrc.json
+.eslintrc.json
 .gitignore
 src
 node_modules
