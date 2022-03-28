@@ -15,9 +15,6 @@ export function setSrcByIdAsync(id: string,
           ImgSrcAsyncHelper.setSrcById(id, dataUrl, eventProperties)
               .then(() => {
                 return resolve();
-              })
-              .catch((err) => {
-                return reject(err);
               });
         })
         .catch((err) => {

@@ -4,8 +4,11 @@
   "description": "Sets the src of an image element without leaking memory.",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "tsc -outDir dist"
+    "tests": "karma start",
+    "build": "tsc --outDir dist",
+    "test": "karma start --singleRun",
+    "@init/cli": "npm i -g typescript karma",
+    "coverage": "start ./coverage/Chrome 99.0.4844.82 (Windows 10)/html/index.html"
   },
   "repository": {
     "type": "git",
@@ -30,10 +33,20 @@
   },
   "homepage": "https://github.com/exsjabe/Set-Img-Src#readme",
   "devDependencies": {
+    "@types/eslint": "^8.4.1",
+    "@types/jasmine": "^4.0.0",
+    "@types/karma": "^6.3.3",
     "@typescript-eslint/eslint-plugin": "^5.16.0",
     "@typescript-eslint/parser": "^5.16.0",
     "eslint": "^8.12.0",
     "eslint-config-google": "^0.14.0",
+    "jasmine-core": "^4.0.1",
+    "karma": "^6.3.17",
+    "karma-chrome-launcher": "^3.1.1",
+    "karma-cli": "^2.0.0",
+    "karma-jasmine": "^4.0.1",
+    "karma-typescript": "^5.5.3",
+    "karma-webpack": "^5.0.0",
     "typescript": "^4.6.3"
   }
 }

@@ -4,7 +4,7 @@ import {EventProperty} from '../models';
 export function setSrcById(id: string,
     value: string, eventProperties?: EventProperty[]) {
   try {
-    ImgSrcHelper.validateIdInput(id, value, 'setSrcByIdBase64');
+    ImgSrcHelper.validateIdInput(id, value, 'setSrcById');
   } catch (err) {
     throw err;
   }
@@ -30,7 +30,7 @@ export function setSrcByElement(image: HTMLImageElement,
     value: string, eventProperties?: EventProperty[] ) {
   try {
     ImgSrcHelper.validateElementInput(image, value,
-        'setSrcByElementBase64');
+        'setSrcByElement');
   } catch (err) {
     throw err;
   }

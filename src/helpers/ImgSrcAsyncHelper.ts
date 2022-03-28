@@ -21,14 +21,10 @@ export default class ImgSrcAsyncHelper {
       clone.src = dataUrl;
 
       eventProperties?.forEach((prop) => {
-        try {
-          if (prop.Options) {
-            clone.addEventListener(prop.Event, prop.Listener, prop.Options);
-          } else {
-            clone.addEventListener(prop.Event, prop.Listener);
-          }
-        } catch (err) {
-          return reject(err);
+        if (prop.Options) {
+          clone.addEventListener(prop.Event, prop.Listener, prop.Options);
+        } else {
+          clone.addEventListener(prop.Event, prop.Listener);
         }
       });
 
@@ -41,7 +37,7 @@ export default class ImgSrcAsyncHelper {
       id: string, value: string, origin: string): Promise<void> {
     return new Promise((resolve, reject) => {
       if (!id) {
-        return reject(new Error(`${origin}: id was empty.`));
+        return reject(new Error(`${origin}: id was empty`));
       }
       let imageElement;
       try {
@@ -58,11 +54,11 @@ export default class ImgSrcAsyncHelper {
 
       if (!(imageElement.src)) {
         return reject(new Error(
-            `${origin}: ${id} does not have a src attribute.`));
+            `${origin}: ${id} does not have a src attribute`));
       }
 
       if (!value) {
-        return reject(new Error(`${origin}: value was empty.`));
+        return reject(new Error(`${origin}: value was empty`));
       }
 
       return resolve();
