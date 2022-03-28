@@ -6,3 +6,4 @@ node_modules
 .vscode
 coverage
 tests
+karma.conf.js
