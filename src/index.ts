@@ -1,17 +1,15 @@
-import ImgSrcHandler from './lib';
-import {setSrcByElementBase64, setSrcByElementDataUrl,
-  setSrcByIdBase64, setSrcByIdDataUrl,
-  removeSrcByElement, removeSrcById, ImgSrcAsyncHandler,
-  setSrcByElementBase64Async, setSrcByElementDataUrlAsync,
-  setSrcByIdBase64Async, setSrcByIdDataUrlAsync,
+import {setSrcByElement, setSrcById,
+  removeSrcByElement, removeSrcById,
+  ImgSrcHandler, ImgSrcAsyncHandler,
+  setSrcByElementAsync, setSrcByIdAsync,
   removeSrcByElementAsync, removeSrcByIdAsync} from './lib';
+import {EventProperty} from './models';
 
 export default ImgSrcHandler;
 
-export {setSrcByElementBase64, setSrcByElementDataUrl,
-  setSrcByIdBase64, setSrcByIdDataUrl,
+export {setSrcByElement, setSrcById,
   removeSrcByElement, removeSrcById,
   ImgSrcAsyncHandler, ImgSrcHandler,
-  setSrcByElementBase64Async, setSrcByElementDataUrlAsync,
-  setSrcByIdBase64Async, setSrcByIdDataUrlAsync,
-  removeSrcByElementAsync, removeSrcByIdAsync};
+  setSrcByElementAsync, setSrcByIdAsync,
+  removeSrcByElementAsync, removeSrcByIdAsync,
+  EventProperty};
