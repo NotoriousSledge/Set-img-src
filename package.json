@@ -1,6 +1,6 @@
 {
   "name": "set-img-src",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Sets the src of an image element without leaking memory.",
   "main": "dist/index.js",
   "scripts": {
