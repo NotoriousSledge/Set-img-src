@@ -1,6 +1,6 @@
 {
   "name": "set-img-src",
-  "version": "1.2.5",
+  "version": "1.2.7",
   "description": "Sets the src of an image element without leaking memory.",
   "main": "dist/index.js",
   "scripts": {
@@ -48,5 +48,8 @@
     "karma-super-dots-reporter": "^0.2.0",
     "karma-typescript": "^5.5.3",
     "typescript": "^4.6.3"
+  },
+  "publishConfig": {
+    "@exsjabe:registry": "https://npm.pkg.github.com"
   }
 }
