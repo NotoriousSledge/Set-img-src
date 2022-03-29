@@ -4,7 +4,7 @@
   "description": "Sets the src of an image element without leaking memory.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "del dist /q && tsc --outDir dist",
+    "build": "if exist dist del dist /q && tsc --outDir dist",
     "test": "karma start",
     "@init/cli": "npm i -g typescript karma",
     "coverage": "start ./coverage/Chrome 99.0.4844.82 (Windows 10)/html/index.html"
