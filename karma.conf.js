@@ -9,7 +9,7 @@ module.exports = function(config) {
       '**/*.ts': 'karma-typescript', // *.tsx for React Jsx
     },
     reporters: ['progress', 'karma-typescript', 'dots', 'junit'],
-    browsers: ['Chrome'],
+    browsers: ['Firefox'],
     singleRun: true,
     junitReporter: {
       outputFile: './test-results.xml',
