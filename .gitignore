@@ -2,5 +2,4 @@
 /.vscode
 dist
 coverage
-Chrome**
-Firefox**
+test_results

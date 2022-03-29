@@ -13,6 +13,8 @@ module.exports = function(config) {
     singleRun: true,
     junitReporter: {
       outputFile: './test-results.xml',
+      useBrowserName: false,
+      outputDir: './test_results',
     },
   });
 };
