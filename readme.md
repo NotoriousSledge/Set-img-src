@@ -5,6 +5,7 @@ Set-Img-Src
 
 ![GitHub](https://img.shields.io/github/license/exsjabe/set-img-src)
 [![CodeFactor](https://www.codefactor.io/repository/github/exsjabe/set-img-src/badge/master)](https://www.codefactor.io/repository/github/exsjabe/set-img-src/overview/master)
+![AppVeyor tests](https://img.shields.io/appveyor/tests/exsjabe/set-img-src)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/set-img-src)
 ![GitHub top language](https://img.shields.io/github/languages/top/exsjabe/set-img-src)
 ![Code Style](https://img.shields.io/badge/Code%20Style-google-blueviolet)
@@ -21,7 +22,7 @@ Set-Img-Src
   - [All Exports](#all-exports)
 
 ## General info
-Set-img-src is aimed at solving [a browser bug](#https://stackoverflow.com/questions/19298393/setting-img-src-to-dataurl-leaks-memory) where changing the src attribute of an image between dataURLs or base64-strings causes RAM spikes.
+Set-img-src is aimed at solving ![a browser bug](https://stackoverflow.com/questions/19298393/setting-img-src-to-dataurl-leaks-memory) where changing the src attribute of an image between dataURLs or base64-strings causes RAM spikes.
 The bug has been marked as fixed in Chromium however people have reported it despite that and I myself recently encountered it as well.
 Essentially all this project does is taking [this solution](https://github.com/quru/image-defer/issues/2) of using cloneNode, adding a parameter for moving eventListeners as well, and then putting it in a package so it can be easily moved between projects.
 
