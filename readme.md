@@ -22,7 +22,7 @@ Set-Img-Src
   - [All Exports](#all-exports)
 
 ## General info
-Set-img-src is aimed at solving ![a browser bug](https://stackoverflow.com/questions/19298393/setting-img-src-to-dataurl-leaks-memory) where changing the src attribute of an image between dataURLs or base64-strings causes RAM spikes.
+Set-img-src is aimed at solving [a browser bug](https://stackoverflow.com/questions/19298393/setting-img-src-to-dataurl-leaks-memory) where changing the src attribute of an image between dataURLs or base64-strings causes RAM spikes.
 The bug has been marked as fixed in Chromium however people have reported it despite that and I myself recently encountered it as well.
 Essentially all this project does is taking [this solution](https://github.com/quru/image-defer/issues/2) of using cloneNode, adding a parameter for moving eventListeners as well, and then putting it in a package so it can be easily moved between projects.
 
