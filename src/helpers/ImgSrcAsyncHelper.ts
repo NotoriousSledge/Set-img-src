@@ -5,12 +5,8 @@ export default class ImgSrcAsyncHelper {
       dataUrl: string, eventProperties?: EventProperty[]): Promise<void> {
     return new Promise((async (resolve, reject) => {
       const image = document.getElementById(id) as HTMLImageElement;
-      try {
-        await this.setSrcByElement(image, dataUrl, eventProperties);
-        return resolve();
-      } catch (err) {
-        return reject(err);
-      }
+      await this.setSrcByElement(image, dataUrl, eventProperties);
+      return resolve();
     }));
   }
 
@@ -39,12 +35,7 @@ export default class ImgSrcAsyncHelper {
       if (!id) {
         return reject(new Error(`${origin}: id was empty`));
       }
-      let imageElement;
-      try {
-        imageElement = document.getElementById(id) as HTMLImageElement;
-      } catch (err) {
-        return reject(err);
-      }
+      const imageElement = document.getElementById(id) as HTMLImageElement;
 
       if (!imageElement) {
         return reject(new Error(
@@ -69,16 +60,16 @@ export default class ImgSrcAsyncHelper {
       value: string, origin: string): Promise<void> {
     return new Promise((resolve, reject) => {
       if (!element) {
-        return reject(new Error(`${origin}: Element can not be null.`));
+        return reject(new Error(`${origin}: Element can not be null`));
       }
 
       if (!(element.src)) {
         return reject(new Error(
-            `${origin}: Element does not have a src attribute.`));
+            `${origin}: Element does not have a src attribute`));
       }
 
       if (!value) {
-        return reject(new Error(`${origin}: value was empty.`));
+        return reject(new Error(`${origin}: value was empty`));
       }
 
       return resolve();

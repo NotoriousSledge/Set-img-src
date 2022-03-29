@@ -1,12 +1,11 @@
 {
   "name": "set-img-src",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Sets the src of an image element without leaking memory.",
   "main": "dist/index.js",
   "scripts": {
-    "tests": "karma start",
-    "build": "tsc --outDir dist",
-    "test": "karma start --singleRun",
+    "build": "del dist /q && tsc --outDir dist",
+    "test": "karma start",
     "@init/cli": "npm i -g typescript karma",
     "coverage": "start ./coverage/Chrome 99.0.4844.82 (Windows 10)/html/index.html"
   },
@@ -45,6 +44,8 @@
     "karma-chrome-launcher": "^3.1.1",
     "karma-cli": "^2.0.0",
     "karma-jasmine": "^4.0.1",
+    "karma-junit-reporter": "^2.0.1",
+    "karma-super-dots-reporter": "^0.2.0",
     "karma-typescript": "^5.5.3",
     "karma-webpack": "^5.0.0",
     "typescript": "^4.6.3"

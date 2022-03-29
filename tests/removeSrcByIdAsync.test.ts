@@ -1,51 +1,49 @@
-import {EventProperty, ImgSrcHandler} from '../src/index';
-describe('removeSrcById', function() {
-  it('should be able to remove the src of an element by Id', function() {
-    const id = 'removeId';
+import {EventProperty, ImgSrcAsyncHandler} from '../src/index';
+describe('removeSrcByIdAsync', async () => {
+  it('should be able to remove the src of an element by Id', async () => {
+    const id = 'removeIdAsync';
     const removeValue = 'removeValue';
     const imageElement = document.createElement('img');
     imageElement.id = id;
     imageElement.src = 'removeValue';
     document.body.appendChild(imageElement);
-    ImgSrcHandler.removeSrcById(id);
+    await ImgSrcAsyncHandler.removeSrcById(id);
 
     const clonedElement = document.getElementById(id) as HTMLImageElement;
     expect(clonedElement?.src === removeValue).toBeFalsy();
     document.body.removeChild(clonedElement);
   });
 
-  it('should throw an error if the id is empty', function() {
-    expect( function() {
-      ImgSrcHandler.removeSrcById('');
-    } ).toThrow(new Error('removeSrcById: id was empty'));
+  it('should throw an error if the id is empty', async () => {
+    await expectAsync(ImgSrcAsyncHandler.removeSrcById(''))
+        .toBeRejectedWithError('removeSrcByIdAsync: id was empty');
   });
 
-  it('should throw an error if id is invalid', function() {
-    const id = 'invalidIdRemoveId';
-    expect( function() {
-      ImgSrcHandler.removeSrcById(id);
-    } ).toThrow(
-        new Error(`removeSrcById: Couldn't get element with id: ${id}`));
+  it('should throw an error if id is invalid', async () => {
+    const id = 'invalidIdRemoveIdAsync';
+    await expectAsync(ImgSrcAsyncHandler.removeSrcById(id))
+        .toBeRejectedWithError(
+            `removeSrcByIdAsync: Couldn't get element with id: ${id}`);
   });
 
-  it('should throw an error if element is invalid', function() {
-    const id = 'invalidElementRemoveId';
+  it('should throw an error if element is invalid', async () => {
+    const id = 'invalidElementRemoveIdAsync';
     const invalidElement = document.createElement('div');
     invalidElement.id = id;
     document.body.appendChild(invalidElement);
-    expect( function() {
-      ImgSrcHandler.removeSrcById(id);
-    } ).toThrow(
-        new Error(`removeSrcById: ${id} does not have a src attribute`));
+    await expectAsync(ImgSrcAsyncHandler.removeSrcById(id))
+        .toBeRejectedWithError(
+            `removeSrcByIdAsync: ${id} does not have a src attribute`);
   });
 
-  it('should also copy the events of an element', function() {
+  it('should also copy the events of an element', async () => {
     function handleClick(event: Event) {
-      const self = document.getElementById('eventRemoveId') as HTMLImageElement;
+      const self = document
+          .getElementById('eventRemoveIdAsync') as HTMLImageElement;
       self.className = 'removeValue';
     }
 
-    const id = 'eventRemoveId';
+    const id = 'eventRemoveIdAsync';
     const imageElement = document.createElement('img');
     imageElement.id = id;
     imageElement.src = 'image';
@@ -56,17 +54,17 @@ describe('removeSrcById', function() {
     const eventProps: EventProperty[] =
     [{Event: 'click', Listener: handleClick}];
 
-    ImgSrcHandler.removeSrcById(id, eventProps);
+    await ImgSrcAsyncHandler.removeSrcById(id, eventProps);
 
     const clonedElement = document.getElementById(id) as HTMLImageElement;
     clonedElement.click();
     expect(clonedElement.className).toBe('removeValue');
   });
 
-  it('should also copy the events with options of an element', function() {
+  it('should also copy the events with options of an element', async () => {
     function handleClick(event: Event) {
       const self = document.getElementById(
-          'optionRemoveId') as HTMLImageElement;
+          'optionRemoveIdAsync') as HTMLImageElement;
       const currentClass = self.className;
       if (!currentClass) {
         self.className = '1';
@@ -80,7 +78,7 @@ describe('removeSrcById', function() {
       once: true,
     };
 
-    const id = 'optionRemoveId';
+    const id = 'optionRemoveIdAsync';
     const imageElement = document.createElement('img');
     imageElement.id = id;
     imageElement.src = 'image';
@@ -92,7 +90,7 @@ describe('removeSrcById', function() {
     const eventProps: EventProperty[] =
     [{Event: 'click', Listener: handleClick, Options: options}];
 
-    ImgSrcHandler.removeSrcById(id, eventProps);
+    await ImgSrcAsyncHandler.removeSrcById(id, eventProps);
 
     const clonedElement = document.getElementById(id) as HTMLImageElement;
     clonedElement.click();

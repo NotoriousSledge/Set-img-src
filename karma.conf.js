@@ -8,7 +8,11 @@ module.exports = function(config) {
     preprocessors: {
       '**/*.ts': 'karma-typescript', // *.tsx for React Jsx
     },
-    reporters: ['progress', 'karma-typescript'],
+    reporters: ['progress', 'karma-typescript', 'dots', 'junit'],
     browsers: ['Chrome'],
+    singleRun: true,
+    junitReporter: {
+      outputFile: './test-results.xml',
+    },
   });
 };

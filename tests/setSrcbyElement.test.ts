@@ -1,4 +1,4 @@
-import {EventProperty, setSrcByElement} from '../src/index';
+import {EventProperty, ImgSrcHandler} from '../src/index';
 describe('setSrcByElement', function() {
   it('should be able to change the dataUrl of an element', function() {
     const id = 'dataUrlElement';
@@ -7,7 +7,7 @@ describe('setSrcByElement', function() {
     dataImage.id = id;
     dataImage.src = 'srcValue';
     document.body.appendChild(dataImage);
-    setSrcByElement(dataImage, dataUrl);
+    ImgSrcHandler.setSrcByElement(dataImage, dataUrl);
 
     const clonedElement = document.getElementById(id) as HTMLImageElement;
     expect(clonedElement?.src).toBe(dataUrl);
@@ -22,7 +22,7 @@ describe('setSrcByElement', function() {
     imageElement.id = id;
     imageElement.src = 'srcValue';
     document.body.appendChild(imageElement);
-    setSrcByElement(imageElement, base64);
+    ImgSrcHandler.setSrcByElement(imageElement, base64);
 
     const clonedElement = document.getElementById(id) as HTMLImageElement;
     expect(clonedElement?.src).toBe(dataUrl);
@@ -32,7 +32,7 @@ describe('setSrcByElement', function() {
   it('should throw an error if the element is null', function() {
     expect( function() {
       const nullElement = document.getElementById('null') as HTMLImageElement;
-      setSrcByElement(nullElement, 'value');
+      ImgSrcHandler.setSrcByElement(nullElement, 'value');
     } ).toThrow(new Error('setSrcByElement: Element can not be null'));
   });
 
@@ -42,7 +42,8 @@ describe('setSrcByElement', function() {
     invalidElement.id = id;
     document.body.appendChild(invalidElement);
     expect( function() {
-      setSrcByElement(invalidElement as HTMLImageElement, 'value');
+      ImgSrcHandler
+          .setSrcByElement(invalidElement as HTMLImageElement, 'value');
     } ).toThrow(
         new Error(`setSrcByElement: Element does not have a src attribute`));
   });
@@ -55,7 +56,7 @@ describe('setSrcByElement', function() {
     document.body.appendChild(imageElement);
 
     expect( function() {
-      setSrcByElement(imageElement, '');
+      ImgSrcHandler.setSrcByElement(imageElement, '');
     } ).toThrow(
         new Error(`setSrcByElement: value was empty`));
   });
@@ -78,7 +79,7 @@ describe('setSrcByElement', function() {
     const eventProps: EventProperty[] =
     [{Event: 'click', Listener: handleClick}];
 
-    setSrcByElement(imageElement, dataUrl, eventProps);
+    ImgSrcHandler.setSrcByElement(imageElement, dataUrl, eventProps);
 
     const clonedElement = document.getElementById(id) as HTMLImageElement;
     clonedElement.click();
@@ -115,7 +116,7 @@ describe('setSrcByElement', function() {
     const eventProps: EventProperty[] =
     [{Event: 'click', Listener: handleClick, Options: options}];
 
-    setSrcByElement(imageElement, dataUrl, eventProps);
+    ImgSrcHandler.setSrcByElement(imageElement, dataUrl, eventProps);
 
     const clonedElement = document.getElementById(id) as HTMLImageElement;
     clonedElement.click();

@@ -26,14 +26,11 @@ export function setSrcByIdAsync(id: string,
 export function removeSrcByIdAsync(id: string,
     eventProperties?: EventProperty[]): Promise<void> {
   return new Promise((resolve, reject) => {
-    ImgSrcAsyncHelper.validateIdInput(id, 'REMOVE', 'removeSrcById')
+    ImgSrcAsyncHelper.validateIdInput(id, 'REMOVE', 'removeSrcByIdAsync')
         .then(() => {
           ImgSrcAsyncHelper.setSrcById(id, '', eventProperties)
               .then(() => {
                 return resolve();
-              })
-              .catch((err) => {
-                return reject(err);
               });
         })
         .catch((err) => {
@@ -57,9 +54,6 @@ export function setSrcByElementAsync(image: HTMLImageElement,
           ImgSrcAsyncHelper.setSrcByElement(image, dataUrl, eventProperties)
               .then(() => {
                 return resolve();
-              })
-              .catch((err) => {
-                return reject(err);
               });
         })
         .catch((err) => {
@@ -72,14 +66,11 @@ export function removeSrcByElementAsync(image: HTMLImageElement,
     eventProperties?: EventProperty[]): Promise<void> {
   return new Promise((resolve, reject) => {
     ImgSrcAsyncHelper.validateElementInput(
-        image, 'REMOVE', 'removeSrcByElement')
+        image, 'REMOVE', 'removeSrcByElementAsync')
         .then(() => {
           ImgSrcAsyncHelper.setSrcByElement(image, '', eventProperties)
               .then(() => {
                 return resolve();
-              })
-              .catch((err) => {
-                return reject(err);
               });
         })
         .catch((err) => {

@@ -1,71 +1,71 @@
 import {EventProperty, ImgSrcAsyncHandler} from '../src/index';
-describe('setSrcByIdAsync', async () => {
-  it('should be able to change the dataUrl of an element by Id', async () => {
-    const id = 'dataUrlIdAsync';
+describe('setSrcByElementAsync', async () => {
+  it('should be able to change the dataUrl of an element', async () => {
+    const id = 'dataUrlElementAsync';
     const imageElement = document.createElement('img');
     const dataUrl = `data:image/jpeg;base64,dataURLValue`;
     imageElement.id = id;
     imageElement.src = 'srcValue';
     document.body.appendChild(imageElement);
-    await ImgSrcAsyncHandler.setSrcById(id, dataUrl);
+    await ImgSrcAsyncHandler.setSrcByElement(imageElement, dataUrl);
 
     const clonedElement = document.getElementById(id) as HTMLImageElement;
     expect(clonedElement?.src).toBe(dataUrl);
     document.body.removeChild(clonedElement);
   });
 
-  it('should be able to change the base64 of an element by Id', async () => {
-    const id = 'base64IdAsync';
+  it('should be able to change the base64 of an element', async () => {
+    const id = 'base64ElementAsync';
     const imageElement = document.createElement('img');
     const base64 = `dataURLValue`;
     const dataUrl = `data:image/jpeg;base64,dataURLValue`;
     imageElement.id = id;
     imageElement.src = 'srcValue';
     document.body.appendChild(imageElement);
-    await ImgSrcAsyncHandler.setSrcById(id, base64);
+    await ImgSrcAsyncHandler.setSrcByElement(imageElement, base64);
 
     const clonedElement = document.getElementById(id) as HTMLImageElement;
     expect(clonedElement?.src).toBe(dataUrl);
     document.body.removeChild(clonedElement);
   });
 
-  it('should throw an error if the id is empty', async () => {
-    await expectAsync(ImgSrcAsyncHandler.setSrcById('', 'value')).
+  it('should throw an error if element is null', async () => {
+    const id = 'nullElementAsync';
+    const nullElement = document.getElementById(id);
+    await expectAsync(
+        ImgSrcAsyncHandler
+            .setSrcByElement(nullElement as HTMLImageElement, 'value')).
         toBeRejectedWithError(
-            `setSrcByIdAsync: id was empty`);
-  });
-
-  it('should throw an error if id is invalid', async () => {
-    const id = 'invalidIdAsync';
-    await expectAsync(ImgSrcAsyncHandler.setSrcById(id, 'value')).
-        toBeRejectedWithError(
-            `setSrcByIdAsync: Couldn't get element with id: ${id}`);
+            `setSrcByElementAsync: Element can not be null`);
   });
 
   it('should throw an error if element is invalid', async () => {
-    const id = 'invalidElementIdAsync';
+    const id = 'invalidElementAsync';
     const invalidElement = document.createElement('div');
     invalidElement.id = id;
     document.body.appendChild(invalidElement);
-    await expectAsync(ImgSrcAsyncHandler.setSrcById(id, 'value')).
+    await expectAsync(
+        ImgSrcAsyncHandler
+            .setSrcByElement(invalidElement as HTMLImageElement, 'value')).
         toBeRejectedWithError(
-            `setSrcByIdAsync: ${id} does not have a src attribute`);
+            `setSrcByElementAsync: Element does not have a src attribute`);
   });
 
   it('should throw an error if value is empty', async () => {
-    const id = 'emptyValueIdAsync';
+    const id = 'emptyValueElementAsync';
     const imageElement = document.createElement('img');
     imageElement.id = id;
     imageElement.src = 'srcValue';
     document.body.appendChild(imageElement);
 
-    await expectAsync(ImgSrcAsyncHandler.setSrcById(id, '')).
-        toBeRejectedWithError(`setSrcByIdAsync: value was empty`);
+    await expectAsync(ImgSrcAsyncHandler.setSrcByElement(imageElement, '')).
+        toBeRejectedWithError(`setSrcByElementAsync: value was empty`);
   });
 
   it('should also copy the events of an element', async () => {
     function handleClick(event: Event) {
-      const self = document.getElementById('idEventAsync') as HTMLImageElement;
+      const self = document
+          .getElementById('elementEventAsync') as HTMLImageElement;
       const currentClass = self.className;
       if (!currentClass) {
         self.className = '1';
@@ -75,7 +75,7 @@ describe('setSrcByIdAsync', async () => {
       }
     }
 
-    const id = 'idEventAsync';
+    const id = 'elementEventAsync';
     const imageElement = document.createElement('img');
     const dataUrl = `data:image/jpeg;base64,dataURLValue`;
     imageElement.id = id;
@@ -87,7 +87,7 @@ describe('setSrcByIdAsync', async () => {
     const eventProps: EventProperty[] =
     [{Event: 'click', Listener: handleClick}];
 
-    await ImgSrcAsyncHandler.setSrcById(id, dataUrl, eventProps);
+    await ImgSrcAsyncHandler.setSrcByElement(imageElement, dataUrl, eventProps);
 
     const clonedElement = document.getElementById(id) as HTMLImageElement;
     clonedElement.click();
@@ -98,7 +98,8 @@ describe('setSrcByIdAsync', async () => {
 
   it('should also copy the events with options of an element', async () => {
     function handleClick(event: Event) {
-      const self = document.getElementById('idOptionAsync') as HTMLImageElement;
+      const self = document
+          .getElementById('elementOptionAsync') as HTMLImageElement;
       const currentClass = self.className;
       if (!currentClass) {
         self.className = '1';
@@ -112,7 +113,7 @@ describe('setSrcByIdAsync', async () => {
       once: true,
     };
 
-    const id = 'idOptionAsync';
+    const id = 'elementOptionAsync';
     const imageElement = document.createElement('img');
     const dataUrl = `data:image/jpeg;base64,dataURLValue`;
     imageElement.id = id;
@@ -125,7 +126,7 @@ describe('setSrcByIdAsync', async () => {
     const eventProps: EventProperty[] =
     [{Event: 'click', Listener: handleClick, Options: options}];
 
-    await ImgSrcAsyncHandler.setSrcById(id, dataUrl, eventProps);
+    await ImgSrcAsyncHandler.setSrcByElement(imageElement, dataUrl, eventProps);
 
     const clonedElement = document.getElementById(id) as HTMLImageElement;
     clonedElement.click();

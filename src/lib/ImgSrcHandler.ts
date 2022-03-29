@@ -1,10 +1,11 @@
-import {EventProperty} from '../models';
-import * as functions from './functions';
+import {setSrcByElement, setSrcById,
+  removeSrcByElement, removeSrcById,
+  EventProperty} from './../';
 export default class ImgSrcHandler {
   public static setSrcById(id: string,
       value: string, eventProperties?: EventProperty[]) {
     try {
-      functions.setSrcById(id, value, eventProperties);
+      setSrcById(id, value, eventProperties);
     } catch (err) {
       throw (err);
     }
@@ -12,7 +13,7 @@ export default class ImgSrcHandler {
 
   public static removeSrcById(id: string, eventProperties?: EventProperty[]) {
     try {
-      functions.removeSrcById(id, eventProperties);
+      removeSrcById(id, eventProperties);
     } catch (err) {
       throw err;
     }
@@ -22,7 +23,7 @@ export default class ImgSrcHandler {
   public static setSrcByElement(image: HTMLImageElement,
       value: string, eventProperties?: EventProperty[] ) {
     try {
-      functions.setSrcByElement(image, value, eventProperties);
+      setSrcByElement(image, value, eventProperties);
     } catch (err) {
       throw (err);
     }
@@ -31,7 +32,7 @@ export default class ImgSrcHandler {
   public static removeSrcByElement(image: HTMLImageElement,
       eventProperties?: EventProperty[]) {
     try {
-      functions.removeSrcByElement(image, eventProperties);
+      removeSrcByElement(image, eventProperties);
     } catch (err) {
       throw (err);
     }

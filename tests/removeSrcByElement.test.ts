@@ -1,4 +1,4 @@
-import {EventProperty, removeSrcByElement} from '../src/index';
+import {EventProperty, ImgSrcHandler} from '../src/index';
 describe('removeSrcByElement', function() {
   it('should be able to remove the src of an element', function() {
     const id = 'removeId';
@@ -7,7 +7,7 @@ describe('removeSrcByElement', function() {
     imageElement.id = id;
     imageElement.src = 'removeValue';
     document.body.appendChild(imageElement);
-    removeSrcByElement(imageElement);
+    ImgSrcHandler.removeSrcByElement(imageElement);
 
     const clonedElement = document.getElementById(id) as HTMLImageElement;
     expect(clonedElement?.src === removeValue).toBeFalsy();
@@ -18,7 +18,7 @@ describe('removeSrcByElement', function() {
     expect( function() {
       const invalidElement = document.getElementById(
           'nullElement') as HTMLImageElement;
-      removeSrcByElement(invalidElement);
+      ImgSrcHandler.removeSrcByElement(invalidElement);
     } ).toThrow(new Error('removeSrcByElement: Element can not be null'));
   });
 
@@ -26,7 +26,7 @@ describe('removeSrcByElement', function() {
     const invalidElement = document.createElement('div');
 
     expect( function() {
-      removeSrcByElement(invalidElement as HTMLImageElement);
+      ImgSrcHandler.removeSrcByElement(invalidElement as HTMLImageElement);
     } ).toThrow(
         new Error(`removeSrcByElement: Element does not have a src attribute`));
   });
@@ -49,7 +49,7 @@ describe('removeSrcByElement', function() {
     const eventProps: EventProperty[] =
     [{Event: 'click', Listener: handleClick}];
 
-    removeSrcByElement(imageElement, eventProps);
+    ImgSrcHandler.removeSrcByElement(imageElement, eventProps);
 
     const clonedElement = document.getElementById(id) as HTMLImageElement;
     clonedElement.click();
@@ -85,7 +85,7 @@ describe('removeSrcByElement', function() {
     const eventProps: EventProperty[] =
     [{Event: 'click', Listener: handleClick, Options: options}];
 
-    removeSrcByElement(imageElement, eventProps);
+    ImgSrcHandler.removeSrcByElement(imageElement, eventProps);
 
     const clonedElement = document.getElementById(id) as HTMLImageElement;
     clonedElement.click();
