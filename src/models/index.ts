@@ -1,5 +1,5 @@
-import {EventProperty} from './EventProperty';
-
-export {
-  EventProperty,
-};
+export interface EventProperty {
+    Event: string,
+    Listener: EventListenerOrEventListenerObject,
+    Options?: boolean | AddEventListenerOptions | undefined
+}

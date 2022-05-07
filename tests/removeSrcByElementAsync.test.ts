@@ -1,3 +1,4 @@
+/* eslint-disable require-jsdoc */
 import {EventProperty, ImgSrcAsyncHandler} from '../src/index';
 describe('removeSrcByIdAsync', async () => {
   it('should be able to remove the src of an element by Id', async () => {

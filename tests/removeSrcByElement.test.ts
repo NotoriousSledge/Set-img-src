@@ -1,3 +1,4 @@
+/* eslint-disable require-jsdoc */
 import {EventProperty, ImgSrcHandler} from '../src/index';
 describe('removeSrcByElement', function() {
   it('should be able to remove the src of an element', function() {

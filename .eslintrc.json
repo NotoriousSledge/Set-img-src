@@ -14,9 +14,7 @@
     "plugins": [
         "@typescript-eslint"
     ],
-    "rules": {
-        "require-jsdoc": 0
-    },
+    "rules": {},
     "ignorePatterns": [
         "dist/*.js",
         "dist/*.d.ts",

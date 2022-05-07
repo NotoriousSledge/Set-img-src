@@ -1,3 +1,4 @@
+/* eslint-disable require-jsdoc */
 import {EventProperty, ImgSrcHandler} from '../src/index';
 describe('setSrcById', function() {
   it('should be able to change the dataUrl of an element by Id', function() {

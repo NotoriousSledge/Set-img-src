@@ -1,6 +1,21 @@
 import {EventProperty} from '../models';
-export default class ImgSrcHelper {
-  public static validateIdInput(id: string, value: string, origin: string) {
+
+/**
+ * A helper class for setting the src of an image element.
+ * Contains the implementation logic for the setSrc-methods.
+ * @class ImgSrcHelper
+ */
+export class ImgSrcHelper {
+  /**
+   * Validates the input for the SrcById-methods.
+   * @param {string} id The id of the element to set the src to.
+   * @param {string} value The value to set the src to.
+   * @param {string} origin The origin of the method.
+   * @return {void}
+   * @throws {Error} If any input is invalid.
+   */
+  public static validateIdInput(
+      id: string, value: string, origin: string): void {
     if (!id) {
       throw new Error(`${origin}: id was empty`);
     }
@@ -21,8 +36,16 @@ export default class ImgSrcHelper {
     }
   }
 
+  /**
+   * Validates the input for the SrcByElement-methods.
+   * @param {HTMLImageElement} element The id of the element to set the src to.
+   * @param {string} value The value to set the src to.
+   * @param {string} origin The origin of the method.
+   * @return {void}
+   * @throws {Error} If any input is invalid.
+   */
   public static validateElementInput(element: HTMLImageElement,
-      value: string, origin: string) {
+      value: string, origin: string): void {
     if (!element) {
       throw new Error(`${origin}: Element can not be null`);
     }
@@ -36,12 +59,29 @@ export default class ImgSrcHelper {
     }
   }
 
+  /**
+   * Gets the element containing the id and then calls the srcByElement-method.
+   * @param {string} id The id of the element to set the src to.
+   * @param {string} dataUrl The value to set the src to.
+   * @param {EventProperty[]} eventProperties The events to keep on the element.
+   * @return {void}
+   */
   public static setSrcById(id: string,
-      dataUrl: string, eventProperties?: EventProperty[]) {
+      dataUrl: string, eventProperties?: EventProperty[]): void {
     const image = document.getElementById(id) as HTMLImageElement;
     this.setSrcByElement(image, dataUrl, eventProperties);
   }
 
+  /**
+   * Sets the src of an image element.
+   * The actual implementation of the method.
+   * Bypasses the problem by cloning and replacing.
+   * Instead of setting the src directly.
+   * @param {HTMLImageElement} image The image element to set the src to.
+   * @param {string} dataUrl The value to set the src to.
+   * @param {EventProperty[]} eventProperties The events to keep on the element.
+   * @return {void}
+   */
   public static setSrcByElement(image: HTMLImageElement,
       dataUrl: string, eventProperties?: EventProperty[]) {
     const clone = image.cloneNode(true) as HTMLImageElement;
@@ -56,11 +96,6 @@ export default class ImgSrcHelper {
     });
 
     image.parentNode?.replaceChild(clone, image);
-  }
-
-
-  public static base64ToDataURL(base64: string): string {
-    return `data:image/jpeg;base64,${base64}`;
   }
 }
 

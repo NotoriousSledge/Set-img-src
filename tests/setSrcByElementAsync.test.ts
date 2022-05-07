@@ -1,3 +1,4 @@
+/* eslint-disable require-jsdoc */
 import {EventProperty, ImgSrcAsyncHandler} from '../src/index';
 describe('setSrcByElementAsync', async () => {
   it('should be able to change the dataUrl of an element', async () => {
