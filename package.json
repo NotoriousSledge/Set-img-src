@@ -1,12 +1,14 @@
 {
   "name": "set-img-src",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "description": "Sets the src of an image element without leaking memory.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "if exist dist del dist /q && tsc --outDir dist",
+    "build": "npm run clean && npm run rebuild",
+    "clean": "if exist dist del dist /q",
+    "rebuild": "tsc --outDir dist",
     "test": "karma start",
-    "@init/cli": "npm i -g typescript karma",
+    "lint": "npx eslint ./src/**/*.ts --fix",
     "coverage": "start ./coverage/Chrome 99.0.4844.82 (Windows 10)/html/index.html"
   },
   "repository": {
